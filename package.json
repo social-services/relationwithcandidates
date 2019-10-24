@@ -1,0 +1,21 @@
+{
+  "name": "social_relationwithcandidatesservice",
+  "version": "1.0.0",
+  "description": "RelationWithCandidatesService",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url" : "git@github.com:social-services/relationwithcandidates.git"
+  },
+  "keywords": [
+    "ecosystem:allex",
+    "Service",
+    "RelationWithCandidates"
+  ],
+  "author": "HERS Belgrade",
+  "license": "ISC"
+}
+
