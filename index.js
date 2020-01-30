@@ -2,7 +2,7 @@ function createServicePack(execlib) {
   'use strict';
   return {
     service: {
-      dependencies: ['.']
+      dependencies: ['.','allex:staticservicecontainer:lib']
     },
     sinkmap: {
       dependencies: ['.']
