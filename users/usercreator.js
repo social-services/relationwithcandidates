@@ -44,6 +44,10 @@ function createUser(execlib, ParentUser) {
     qlib.promise2defer(this.__service.dropRelation(initiatorname, targetname), defer);
   };
 
+  User.prototype.getMatches = function (username, defer) {
+    qlib.promise2defer(this.__service.getMatches(username), defer);
+  };
+
   return User;
 }
 

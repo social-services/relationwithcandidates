@@ -41,5 +41,9 @@ module.exports = {
   },{
     title: 'Target Name',
     type: 'string'
+  }],
+  getMatches: [{
+    title: 'User Name',
+    type: 'string'
   }]
 };

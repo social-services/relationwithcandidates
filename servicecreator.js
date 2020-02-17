@@ -90,6 +90,11 @@ function createRelationWithCandidatesService(execlib, ParentService, StaticServi
     return this.jobs.run('.', new jobs.DropRelationJob(this, initiatorname, targetname));
   };
 
+  RelationWithCandidatesService.prototype.getMatches = function (username) {
+    console.log('oli getMatches?', username);
+    return this.jobs.run('.', new jobs.GetMatchesJob(this, username));
+  };
+
   RelationWithCandidatesService.prototype.announceRWCEvent = function (evnt) {
     this.state.set('lastRWCEvent', evnt);
   };

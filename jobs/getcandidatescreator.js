@@ -96,7 +96,7 @@ function createGetCandidatesJob (execlib, mylib) {
       value: nin
     }];
     ret = lib.isArray(this.filters) ? ret.concat(this.filters) : ret;
-    //console.log('GetCandidatesJob usersFilter', ret);
+    console.log('GetCandidatesJob usersFilter', ret);
     return ret;
   };
 

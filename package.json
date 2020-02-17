@@ -1,21 +1,48 @@
 {
-  "name": "social_relationwithcandidatesservice",
-  "version": "1.0.0",
-  "description": "RelationWithCandidatesService",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "repository": {
+  "_from": "git+ssh://git@github.com/social-services/relationwithcandidates.git",
+  "_id": "social_relationwithcandidatesservice@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/social_relationwithcandidatesservice",
+  "_phantomChildren": {},
+  "_requested": {
     "type": "git",
-    "url" : "git@github.com:social-services/relationwithcandidates.git"
+    "raw": "git+ssh://git@github.com/social-services/relationwithcandidates.git",
+    "rawSpec": "git+ssh://git@github.com/social-services/relationwithcandidates.git",
+    "saveSpec": "git+ssh://git@github.com/social-services/relationwithcandidates.git",
+    "fetchSpec": "ssh://git@github.com/social-services/relationwithcandidates.git",
+    "gitCommittish": null
   },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "git+ssh://git@github.com/social-services/relationwithcandidates.git#c5685b7b8a7e9ba1abb2f91de4ffd1112a99aa23",
+  "_spec": "git+ssh://git@github.com/social-services/relationwithcandidates.git",
+  "_where": "/usr/lib",
+  "author": {
+    "name": "HERS Belgrade"
+  },
+  "bugs": {
+    "url": "https://github.com/social-services/relationwithcandidates/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "RelationWithCandidatesService",
+  "homepage": "https://github.com/social-services/relationwithcandidates#readme",
   "keywords": [
     "ecosystem:allex",
     "Service",
     "RelationWithCandidates"
   ],
-  "author": "HERS Belgrade",
-  "license": "ISC"
+  "license": "ISC",
+  "main": "index.js",
+  "name": "social_relationwithcandidatesservice",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/social-services/relationwithcandidates.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "1.0.0"
 }
-

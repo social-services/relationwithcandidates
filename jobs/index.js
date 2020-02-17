@@ -11,6 +11,7 @@ function createJobs (execlib) {
   require('./getinitiatorscreator')(execlib, ret);
   require('./relationacceptorcreator')(execlib, ret);
   require('./relationdroppercreator')(execlib, ret);
+  require('./getmatchescreator')(execlib, ret);
 
   return ret;
 }
