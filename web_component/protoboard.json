@@ -2,6 +2,9 @@
   "browserify": {
     "dist/browserified.js":"../browserify.js"
   },
+  "dependencies": {
+    "js": ["social:rwcmethoddescriptors:lib"]
+  },
   "protoboard": {
     "role":"web_component",
     "public_dirs": []

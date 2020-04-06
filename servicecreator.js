@@ -1,4 +1,4 @@
-function createRelationWithCandidatesService(execlib, ParentService, StaticServiceContainerMixin) {
+function createRelationWithCandidatesService(execlib, ParentService, StaticServiceContainerMixin, methoddescriptors, vararglib) {
   'use strict';
   
   var lib = execlib.lib,
@@ -9,7 +9,7 @@ function createRelationWithCandidatesService(execlib, ParentService, StaticServi
   function factoryCreator(parentFactory) {
     return {
       'service': require('./users/serviceusercreator')(execlib, parentFactory.get('service')),
-      'user': require('./users/usercreator')(execlib, parentFactory.get('user')) 
+      'user': require('./users/usercreator')(execlib, parentFactory.get('user'), methoddescriptors, vararglib) 
     };
   }
 
