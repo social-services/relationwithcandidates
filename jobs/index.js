@@ -1,4 +1,4 @@
-function createJobs (execlib) {
+function createJobs (execlib, arrayoperationslib) {
   'use strict';
 
   var lib = execlib.lib,
@@ -11,7 +11,7 @@ function createJobs (execlib) {
   require('./getinitiatorscreator')(execlib, ret);
   require('./relationacceptorcreator')(execlib, ret);
   require('./relationdroppercreator')(execlib, ret);
-  require('./getmatchescreator')(execlib, ret);
+  require('./getmatchescreator')(execlib, ret, arrayoperationslib);
 
   return ret;
 }

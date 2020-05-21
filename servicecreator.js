@@ -1,10 +1,10 @@
-function createRelationWithCandidatesService(execlib, ParentService, StaticServiceContainerMixin, methoddescriptors, vararglib) {
+function createRelationWithCandidatesService(execlib, ParentService, StaticServiceContainerMixin, methoddescriptors, vararglib, arrayoperationslib) {
   'use strict';
   
   var lib = execlib.lib,
     q = lib.q,
     qlib = lib.qlib,
-    jobs = require('./jobs')(execlib);
+    jobs = require('./jobs')(execlib, arrayoperationslib);
 
   function factoryCreator(parentFactory) {
     return {
