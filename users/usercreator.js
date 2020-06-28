@@ -19,40 +19,6 @@ function createUser(execlib, ParentUser, methoddescriptors, vararglib) {
 
   userPrototype2ServiceMethodViaMethodDescriptors(User.prototype, methoddescriptors.service.user);
 
-  /*
-  User.prototype.fetchProfile = function (username, defer) {
-    qlib.promise2defer(this.__service.fetchProfile(username), defer);
-  };
-
-  User.prototype.getCandidates = function (username, filters, defer) {
-    qlib.promise2defer(this.__service.getCandidates(username, filters), defer);
-  };
-
-  User.prototype.initiateRelation = function (initiatorname, targetname, defer) {
-    qlib.promise2defer(this.__service.initiateRelation(initiatorname, targetname), defer);
-  };
-
-  User.prototype.blockRelation = function (initiatorname, targetname, defer) {
-    qlib.promise2defer(this.__service.blockRelation(initiatorname, targetname), defer);
-  };
-
-  User.prototype.getInitiators = function (username, defer) {
-    qlib.promise2defer(this.__service.getInitiators(username), defer);
-  };
-
-  User.prototype.acceptRelation = function (targetname, initiatorname, defer) {
-    qlib.promise2defer(this.__service.acceptRelation(targetname, initiatorname), defer);
-  };
-
-  User.prototype.dropRelation = function (initiatorname, targetname, defer) {
-    qlib.promise2defer(this.__service.dropRelation(initiatorname, targetname), defer);
-  };
-
-  User.prototype.getMatches = function (username, defer) {
-    qlib.promise2defer(this.__service.getMatches(username), defer);
-  };
-  */
-
   return User;
 }
 

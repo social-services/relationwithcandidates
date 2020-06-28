@@ -65,9 +65,10 @@ function createRelationWithCandidatesService(execlib, ParentService, StaticServi
     return this.jobs.run('.', new jobs.FetchProfileJob(this, username, filterobj)); //queued version (if we had this.jobs = new qlib.JobCollection();)
   };
   
-  RelationWithCandidatesService.prototype.getCandidates = function (username, filters) {
+  RelationWithCandidatesService.prototype.getCandidates = function (username, filters1, filters2) {
+    console.log('getCandidates on Service', username, filters1, filters2);
     //return (new jobs.GetCandidatesJob(this, username, filters)).go(); //non-queued version
-    return this.jobs.run('.', new jobs.GetCandidatesJob(this, username, filters)); //queued version (if we had this.jobs = new qlib.JobCollection();)
+    return this.jobs.run('.', new jobs.GetCandidatesJob(this, username, filters1, filters2)); //queued version (if we had this.jobs = new qlib.JobCollection();)
   };
   
   RelationWithCandidatesService.prototype.initiateRelation = function (initiatorname, targetname) {
