@@ -71,8 +71,8 @@ function createRelationWithCandidatesService(execlib, ParentService, StaticServi
     return this.jobs.run('.', new jobs.GetCandidatesJob(this, username, filters1, filters2)); //queued version (if we had this.jobs = new qlib.JobCollection();)
   };
   
-  RelationWithCandidatesService.prototype.initiateRelation = function (initiatorname, targetname) {
-    return this.jobs.run('.', new jobs.InitiateRelationJob(this, initiatorname, targetname));
+  RelationWithCandidatesService.prototype.initiateRelation = function (initiatorname, targetname, reference) {
+    return this.jobs.run('.', new jobs.InitiateRelationJob(this, initiatorname, targetname, reference));
   };
 
   RelationWithCandidatesService.prototype.blockRelation = function (initiatorname, targetname) {
@@ -83,8 +83,12 @@ function createRelationWithCandidatesService(execlib, ParentService, StaticServi
     return this.jobs.run('.', new jobs.GetInitiatorsJob(this, username));
   };
 
-  RelationWithCandidatesService.prototype.acceptRelation = function (targetname, initiatorname) {
-    return this.jobs.run('.', new jobs.AcceptRelationJob(this, targetname, initiatorname, false));
+  RelationWithCandidatesService.prototype.acceptRelation = function (targetname, initiatorname, reference) {
+    return this.jobs.run('.', new jobs.AcceptRelationJob(this, targetname, initiatorname, reference, false));
+  };
+
+  RelationWithCandidatesService.prototype.rejectRelation = function (targetname, initiatorname) {
+    return this.jobs.run('.', new jobs.RejectRelationJob(this, targetname, initiatorname, false));
   };
 
   RelationWithCandidatesService.prototype.dropRelation = function (initiatorname, targetname) {

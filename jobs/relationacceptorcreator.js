@@ -6,15 +6,17 @@ function createAcceptRelationJob (execlib, mylib) {
     taskRegistry = execSuite.taskRegistry,
     SubSinksJob = mylib.SubSinksJob;
 
-  function AcceptRelationJob (service, targetname, initiatorname, bilateral, defer) {
+  function AcceptRelationJob (service, targetname, initiatorname, reference, bilateral, defer) {
     SubSinksJob.call(this, service, defer);
     this.targetname = targetname;
     this.initiatorname = initiatorname;
+    this.reference = reference;
     this.bilateral = bilateral || false;
   }
   lib.inherit(AcceptRelationJob, SubSinksJob);
   AcceptRelationJob.prototype.destroy = function () {
     this.bilateral = null;
+    this.reference = null;
     this.initiatorname = null;
     this.targetname = null;
     SubSinksJob.prototype.destroy.call(this);
@@ -66,7 +68,7 @@ function createAcceptRelationJob (execlib, mylib) {
     if (!filter) {
       return;
     }
-    this.relationsink.call('update', filter, {acceptancetimestamp: Date.now()}, {op:'set'}).then(
+    this.relationsink.call('update', filter, {acceptancetimestamp: Date.now(), acceptancereference: this.reference}, {op:'set'}).then(
       this.onAccepted.bind(this),
       this.reject.bind(this)
     )

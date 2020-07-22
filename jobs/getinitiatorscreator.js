@@ -1,4 +1,4 @@
-function createGetInitiatorsJob (execlib, mylib) {
+function createGetInitiatorsJob (execlib, mylib, arrayoperationslib) {
   'use strict';
 
   var SubSinksJob = mylib.SubSinksJob, 
@@ -11,9 +11,11 @@ function createGetInitiatorsJob (execlib, mylib) {
   function GetInitiatorsJob (service, username, defer) {
     SubSinksJob.call(this, service, defer);
     this.username = username;
+    this.initiators = null;
   }
   lib.inherit(GetInitiatorsJob, SubSinksJob);
   GetInitiatorsJob.prototype.destroy = function () {
+    this.initiators = null;
     this.username = null;
     SubSinksJob.prototype.destroy.call(this);
   };
@@ -64,7 +66,7 @@ function createGetInitiatorsJob (execlib, mylib) {
       singleshot: false,
       continuous: false,
       limit: 10,
-      visiblefields:['initiator', 'initiationtimestamp'],
+      visiblefields:['initiator', 'initiationtimestamp', 'initiationreference'],
       cb: this.onInitiators.bind(this),
       errorcb: this.reject.bind(this)
     });
@@ -80,6 +82,7 @@ function createGetInitiatorsJob (execlib, mylib) {
       this.resolve([]);
       return;
     }
+    this.initiators = initiators;
     taskRegistry.run('readFromDataSink', {
       sink: this.userssink,
       filter: {
@@ -89,9 +92,24 @@ function createGetInitiatorsJob (execlib, mylib) {
       },
       singleshot: false,
       continuous: false,
-      cb: this.resolve.bind(this),
+      cb: this.onUsers.bind(this),
       errorcb: this.reject.bind(this)
     });
+  };
+  GetInitiatorsJob.prototype.onUsers = function (users) {
+    if (!this.okToProceed()) {
+      return;
+    }
+    this.resolve(users.reduce(this.joinUsersWithInitiators.bind(this), []));
+  };
+  GetInitiatorsJob.prototype.joinUsersWithInitiators = function (result, user) {
+    var m = arrayoperationslib.findElementWithProperty(this.initiators, 'initiator', user.username);
+    if (!m) {
+      return result;
+    }
+    user.initiationreference = m.initiationreference;
+    result.push(user);
+    return result;
   };
 
   mylib.GetInitiatorsJob = GetInitiatorsJob;

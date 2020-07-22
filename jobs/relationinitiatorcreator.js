@@ -8,10 +8,11 @@ function createInitiateRelationJob (execlib, mylib) {
   var SubSinksJob = mylib.SubSinksJob,
     qlib = lib.qlib;
 
-  function InitiateRelationJob (service, initiatorname, targetname, defer) {
+  function InitiateRelationJob (service, initiatorname, targetname, reference, defer) {
     SubSinksJob.call(this, service, defer);
     this.initiatorname = initiatorname;
     this.targetname = targetname;
+    this.reference = reference;
   }
   lib.inherit(InitiateRelationJob, SubSinksJob);
   InitiateRelationJob.prototype.destroy = function () {
@@ -20,7 +21,7 @@ function createInitiateRelationJob (execlib, mylib) {
     SubSinksJob.prototype.destroy.call(this);
   };
   InitiateRelationJob.prototype.useSubSinks = function () {
-    (new mylib.AcceptRelationJob(this.destroyable, this.initiatorname, this.targetname, true)).go().then(
+    (new mylib.AcceptRelationJob(this.destroyable, this.initiatorname, this.targetname, this.reference, true)).go().then(
       this.onPossiblyAccepted.bind(this),
       this.reject.bind(this)
     );
@@ -40,7 +41,8 @@ function createInitiateRelationJob (execlib, mylib) {
     this.relationsink.call('create', {
       initiator: this.initiatorname,
       target: this.targetname,
-      initiationtimestamp: Date.now()
+      initiationtimestamp: Date.now(),
+      initiationreference: this.reference
     }).then(
       this.onSucceeded.bind(this),
       this.onFailed.bind(this)

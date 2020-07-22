@@ -8,8 +8,9 @@ function createJobs (execlib, arrayoperationslib) {
   require('./getcandidatescreator')(execlib, ret);
   require('./relationinitiatorcreator')(execlib, ret);
   require('./relationblockercreator')(execlib, ret);
-  require('./getinitiatorscreator')(execlib, ret);
+  require('./getinitiatorscreator')(execlib, ret, arrayoperationslib);
   require('./relationacceptorcreator')(execlib, ret);
+  require('./relationrejectorcreator')(execlib, ret);
   require('./relationdroppercreator')(execlib, ret);
   require('./getmatchescreator')(execlib, ret, arrayoperationslib);
 
